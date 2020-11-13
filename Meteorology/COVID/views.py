@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 
 
 def Index(request):
+    
     new_process = process.Process()
 
     return JsonResponse({'keys': str(new_process.get_keys())})
