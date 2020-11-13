@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Modeling.urls')),
+    path('covid/', include('COVID.urls')),
 ]
