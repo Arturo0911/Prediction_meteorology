@@ -44,7 +44,7 @@ class Process:
         
         _target = torch.tensor(self._country_stats[[' New_cases']].values).float()
         mean_data = int(torch.mean(_target, dim = 0).item())
-        std_data = int(torch.srd(_target, dim = 0).item())
+        std_data = int(torch.std(_target, dim = 0).item())
 
         return mean_data, std_data
 
@@ -54,7 +54,7 @@ class Process:
 
         _target = torch.tensor(self._country_stats[[' New_deaths']].values).float()
         mean_data = int(torch.mean(_target, dim = 0).item())
-        std_data = int(torch.srd(_target, dim = 0).item())
+        std_data = int(torch.std(_target, dim = 0).item())
 
         return mean_data, std_data
 
