@@ -12,8 +12,8 @@ class Process:
         self.country_subset = self.data_frame[' Country'] # read and apply filters to fetch per country
 
         self._country_stats = ""
-        self._new_deaths = None
-
+        self._new_deaths = ""
+ 
         
     def Read(self):
 
