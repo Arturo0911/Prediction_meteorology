@@ -16,12 +16,11 @@ class Process:
         self._new_deaths = None
 
         
-
-
-    """
-        @return dataframes for all countries
-    """
     def Read(self):
+
+        """
+            Return all dataframes
+        """
 
         return self.data_frame
     
@@ -37,23 +36,19 @@ class Process:
 
 
     def get_mean(self):
+
+        # First calculate the values from the dataset
+        # after that using torch methods, calculate mean and std
+        # return both on int format, and using .item() to get the complete value
         
         self._target = torch.tensor(self._country_stats[['New_cases']].values).float()
 
 
-        mean_data = torch.mean(self._target, dim = 0) 
-        std_data = torch.srd(self._target, dim = 0)
+        mean_data = int(torch.mean(self._target, dim = 0).item())
+        std_data = int(torch.srd(self._target, dim = 0).item())
 
         return mean_data, std_data
 
-    def get_prediction_per_country(self, country):
 
-        pass
-
-    def get_scatter_points(self):
-        pass
-
-    
-
-    def get_new_cases(self):
+    def mortality_ice(self):
         pass
