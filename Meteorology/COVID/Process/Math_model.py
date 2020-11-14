@@ -13,11 +13,11 @@ class Math_model:
 
     def math_model_(self):
 
-        pass
+        # In the math model Y= β0 + β1X   
+        # To right predictions
+        
+        return "Predict model: "+self.Y+" = "+self.Beta_zero + " + "+" ("+self.Beta_one+"."+self.X+")"
 
         
 
-    """
-    In the math model Y= β0 + β1X   
-    To right predictions
-    """
+    
