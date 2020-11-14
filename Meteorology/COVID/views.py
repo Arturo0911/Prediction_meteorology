@@ -38,5 +38,5 @@ def Rate_mortality(request):
 
     #return HttpResponse("mortality rate in the country "+country+", is: "+ str("{0:.2f}".format(rate_value)) + "%")
 
-    return JsonResponse({'rate_mortality': rate_value})
+    return JsonResponse({'country':country,'rate_mortality': rate_value})
 
