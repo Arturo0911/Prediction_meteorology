@@ -9,9 +9,9 @@ class Process:
 
         self.url_name = "https://covid19.who.int/WHO-COVID-19-global-data.csv"
         self.data_frame = pd.read_csv(self.url_name) # Read the Csv file from the url
-        self.country_subset = self.data_frame[[' Country']] # read and apply filters to fetch per country
+        self.country_subset = self.data_frame[' Country'] # read and apply filters to fetch per country
 
-        self._country_stats = None
+        self._country_stats = ""
         self._new_deaths = None
 
         
