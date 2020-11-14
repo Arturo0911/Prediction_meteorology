@@ -59,10 +59,13 @@ class Process:
         return mean_data, std_data
 
     def mortality_rate(self):
+
+        """
         
-        #mean, std = self.get_mean_new_cases()
+        mean_cases, std_cases = self.get_new_cases()
+        mean_deaths, std_deaths = self.get_new_deaths()
+        """
 
+        rate = float((mean_deaths/mean_cases)*100)
 
-        #rate = (())
-
-        pass
+        return rate
