@@ -9,10 +9,9 @@ class Process:
 
         self.url_name = "https://covid19.who.int/WHO-COVID-19-global-data.csv"
         self.data_frame = pd.read_csv(self.url_name) # Read the Csv file from the url
-        self.country_subset = self.data_frame[['Country']] # read and apply filters to fetch per country
+        self.country_subset = self.data_frame[[' Country']] # read and apply filters to fetch per country
 
         self._country_stats = None
-        self._target = None
         self._new_deaths = None
 
         
@@ -34,21 +33,36 @@ class Process:
         self._country_stats = self.data_frame[self.country_subset == country]
         
 
-
-    def get_mean(self):
+    
+    # New_cases 
+    def get_new_cases(self):
 
         # First calculate the values from the dataset
         # after that using torch methods, calculate mean and std
         # return both on int format, and using .item() to get the complete value
         
-        self._target = torch.tensor(self._country_stats[['New_cases']].values).float()
-
-
-        mean_data = int(torch.mean(self._target, dim = 0).item())
-        std_data = int(torch.srd(self._target, dim = 0).item())
+        
+        _target = torch.tensor(self._country_stats[[' New_cases']].values).float()
+        mean_data = int(torch.mean(_target, dim = 0).item())
+        std_data = int(torch.srd(_target, dim = 0).item())
 
         return mean_data, std_data
 
+    def get_new_deaths(self):
+        
 
-    def mortality_ice(self):
+
+        _target = torch.tensor(self._country_stats[[' New_deaths']].values).float()
+        mean_data = int(torch.mean(_target, dim = 0).item())
+        std_data = int(torch.srd(_target, dim = 0).item())
+
+        return mean_data, std_data
+
+    def mortality_rate(self):
+        
+        #mean, std = self.get_mean_new_cases()
+
+
+        #rate = (())
+
         pass
