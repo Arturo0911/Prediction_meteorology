@@ -38,7 +38,7 @@ class Process:
 
     def get_mean(self):
         
-        self._target = torch.tensor(self._country_stats[[' New_cases']].values).float()
+        self._target = torch.tensor(self._country_stats[['New_cases']].values).float()
 
 
         mean_data = torch.mean(self._target, dim = 0) 
