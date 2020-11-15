@@ -19,11 +19,11 @@ def Dataframes(request):
 
     return HttpResponse(str(datas.Read()))
 
-def Rate_mortality(request):
+def Rate_mortality(request, country_code):
 
-    country = "Ecuador"
+    #country = "Ecuador"
     rate = process.Process()
-    rate.get_country_stats(country)
+    rate.get_country_stats(country_code)
     #print(rate._country_stats)
     #print(rate.get_new_cases())
 
@@ -38,7 +38,7 @@ def Rate_mortality(request):
 
     #return HttpResponse("mortality rate in the country "+country+", is: "+ str("{0:.2f}".format(rate_value)) + "%")
 
-    return JsonResponse({'country':country,'rate_mortality': rate_value})
+    return JsonResponse({'country':country_code,'rate_mortality': rate_value})
 
 def Math_model(request):
     # 1 instantiate the Math model class 

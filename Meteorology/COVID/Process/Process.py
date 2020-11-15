@@ -9,7 +9,7 @@ class Process:
 
         self.url_name = "https://covid19.who.int/WHO-COVID-19-global-data.csv"
         self.data_frame = pd.read_csv(self.url_name) # Read the Csv file from the url
-        self.country_subset = self.data_frame[' Country'] # read and apply filters to fetch per country
+        self.country_subset = self.data_frame[' Country_code'] # read and apply filters to fetch per country
 
         self._country_stats = ""
         self._new_deaths = ""
@@ -28,9 +28,9 @@ class Process:
         keys_values = self.data_frame.columns
         return keys_values
 
-    def get_country_stats(self, country):
+    def get_country_stats(self, country_code):
 
-        self._country_stats = self.data_frame[self.country_subset == country]
+        self._country_stats = self.data_frame[self.country_subset == country_code]
         
 
     
