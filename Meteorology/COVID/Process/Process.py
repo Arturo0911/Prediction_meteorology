@@ -54,7 +54,9 @@ class Process:
 
     def get_new_deaths(self):
         
-
+        # First calculate the values from the dataset
+        # after that using torch methods, calculate mean and std
+        # return both on int format, and using .item() to get the complete value
 
         _target = torch.tensor(self._country_stats[[' New_deaths']].values).float()
         mean_data = int(torch.sum(_target, dim = 0).item())
@@ -64,6 +66,8 @@ class Process:
 
     def mortality_rate(self, mean_deaths, mean_cases):
 
+        # Rate mortality is calculated using [(all deaths cases)/(total cases)] * (100 %)
+
         rate = float((mean_deaths/mean_cases)*100)
 
         return rate
@@ -71,6 +75,8 @@ class Process:
     def _get_power_of_x_variables(self):
 
         # (X – X^)²
+
+
         # index into the array to calculate the covariances wth x and y's values
         list_to_index_new_cases = [] # x
         list_to_index_new_deaths = [] # y
@@ -86,7 +92,8 @@ class Process:
         target_deaths = torch.tensor(self._country_stats[[' New_deaths']].values).float()
         mean_deaths = torch.mean(target_deaths, dim= 0).item()
 
-        size_of_array = len(target_cases)
+        size_of_array = len(target_cases) # size of array to load any item indexed
+
         suma = 0 # for the new cases
         suma_d = 0 # for death cases
 
@@ -110,8 +117,6 @@ class Process:
         x_mean = mean_casses
 
         Beta1 = float(suma_d /suma)
-        print(type(Beta1))
-
         Beta0  = (mean_deaths - (mean_casses * Beta1))
 
         return y_mean, x_mean, Beta0, Beta1
