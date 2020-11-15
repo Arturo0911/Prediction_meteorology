@@ -13,6 +13,10 @@ class Process:
 
         self._country_stats = ""
         self._new_deaths = ""
+
+        # this one is for to fetch the values, after calculate the covariance
+        # to model predictions
+        self.list_values = []
  
         
     def Read(self):
@@ -63,3 +67,9 @@ class Process:
         rate = float((mean_deaths/mean_cases)*100)
 
         return rate
+
+    def _test_print_covariance_to_watch_out(self):
+
+        target = torch.tensor(self._country_stats[[' New_cases']].values).int()
+
+        print(target[0])

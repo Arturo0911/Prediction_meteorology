@@ -29,8 +29,10 @@ def Rate_mortality(request, country_code):
 
     mean_cases, std_cases = rate.get_new_cases()
     mean_deaths, std_deaths = rate.get_new_deaths()
-    print(mean_cases, std_cases)
-    print(mean_deaths, std_deaths)
+    #print(mean_cases, std_cases)
+    #print(mean_deaths, std_deaths)
+
+    rate._test_print_covariance_to_watch_out()
 
     rate_value = rate.mortality_rate(mean_deaths,mean_cases)
 
