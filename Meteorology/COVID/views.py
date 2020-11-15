@@ -40,3 +40,10 @@ def Rate_mortality(request):
 
     return JsonResponse({'country':country,'rate_mortality': rate_value})
 
+def Math_model(request):
+    # 1 instantiate the Math model class 
+    # 2 put the values to fetch model, and 
+    #   can get the prediction 
+
+    return HttpResponse("")
+
