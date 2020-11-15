@@ -71,9 +71,6 @@ class Process:
     def _get_power_of_x_variables(self):
 
         # (X – X^)²
-
-
-
         # index into the array to calculate the covariances wth x and y's values
         list_to_index_new_cases = [] # x
         list_to_index_new_deaths = [] # y
