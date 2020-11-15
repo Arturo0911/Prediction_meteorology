@@ -32,7 +32,7 @@ def Rate_mortality(request, country_code):
     #print(mean_cases, std_cases)
     #print(mean_deaths, std_deaths)
 
-    rate._get_power_of_x_variables()
+    print(rate._get_power_of_x_variables())
 
     rate_value = rate.mortality_rate(mean_deaths,mean_cases)
 

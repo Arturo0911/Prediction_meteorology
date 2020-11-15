@@ -68,23 +68,6 @@ class Process:
 
         return rate
 
-    """
-    def return_mean_cases(self):
-        
-
-        _target = torch.tensor(self._country_stats[[' New_cases']].values).int()
-        mean_cases_ = int(torch.mean(_target, dim = 0).item())
-
-        _target_ = torch.tensor(self._country_stats[[' New_deaths']].values).int()
-        _mean_cases = int(torch.mean(_target_, dim = 0).item())
-
-
-
-        return mean_cases_, _mean_cases
-    """
-
-    
-
     def _get_power_of_x_variables(self):
 
         # (X – X^)²
@@ -129,15 +112,11 @@ class Process:
         y_mean = mean_deaths
         x_mean = mean_casses
 
-        Beta1 = "{0:.2f}".format((suma_d /suma))
+        Beta1 = float(suma_d /suma)
+        print(type(Beta1))
 
         Beta0  = (mean_deaths - (mean_casses * Beta1))
 
         return y_mean, x_mean, Beta0, Beta1
         
 
-        #print("la suma de los cuadrados es: ", suma, ", la coviarianza es: ", suma_d, "; por lo tanto, el modelo es", )
-
-        
-
-        #return suma
