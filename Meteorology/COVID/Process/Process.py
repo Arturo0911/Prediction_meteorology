@@ -14,16 +14,10 @@ class Process:
         self._country_stats = ""
         self._new_deaths = ""
 
-        # this one is for to fetch the values, after calculate the covariance
-        # to model predictions
-        self.list_values = []
- 
         
     def Read(self):
 
-        """
-            Return all dataframes
-        """
+        # Return dataframes
 
         return self.data_frame
     

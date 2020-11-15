@@ -16,7 +16,7 @@ class Math_model:
         # In the math model Y= β0 + β1X   
         # To right predictions
         
-        return "Predict model: "+self.Y+" = "+self.Beta_zero + " + "+" ("+self.Beta_one+"."+self.X+")"
+        return "Predict model: Y = "+str(self.Beta_zero) + " + "+" ("+str(self.Beta_one)+".X"+")"
 
         
 

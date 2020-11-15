@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .Process import Process as process
+from .Process import Math_model as _math
 from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
@@ -46,10 +47,21 @@ def Rate_mortality(request, country_code):
 
     return JsonResponse({'country':country_code,'rate_mortality': rate_value})
 
-def Math_model(request):
+def Math_model(request, country_code):
     # 1 instantiate the Math model class 
     # 2 put the values to fetch model, and 
-    #   can get the prediction 
+    #   can get the prediction
 
-    return HttpResponse("")
+    math_model = process.Process()
+    math_model.get_country_stats(country_code)
+
+    y,x,b0,b1 = math_model._get_power_of_x_variables()
+
+    # Math_model class
+    print(y,x,b0,b1)
+
+    Main_model = _math.Math_model(b0, b1, x, y)
+    
+
+    return HttpResponse(Main_model.math_model_())
 
