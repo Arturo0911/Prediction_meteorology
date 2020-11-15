@@ -4,13 +4,13 @@
 
 
 ### Ecuador screenshots of rate mortality
-[!Greeting started](.github/ecuador.png)
+![Greeting started](.github/ecuador.png)
 
 
 ### United states rate mortality
-[!Greeting started](.github/usa.png)
+![Greeting started](.github/usa.png)
 
 
 ### Brazil rate mortality
-[!Greeting started](.github/brazil.png)
+![Greeting started](.github/brazil.png)
 
