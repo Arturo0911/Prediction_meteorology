@@ -95,12 +95,14 @@ class Process:
         list_to_index_new_cases = [] # x
         list_to_index_new_deaths = [] # y
 
+
+        # X
         target_cases = torch.tensor(self._country_stats[[' New_cases']].values).float()
         mean_casses = torch.mean(target_cases, dim= 0).item()
 
 
         
-
+        # Y
         target_deaths = torch.tensor(self._country_stats[[' New_deaths']].values).float()
         mean_deaths = torch.mean(target_deaths, dim= 0).item()
 
@@ -123,9 +125,18 @@ class Process:
 
 
         # Beta 0 and Beta 1 has been already calculated
+
+        y_mean = mean_deaths
+        x_mean = mean_casses
+
+        Beta1 = "{0:.2f}".format((suma_d /suma))
+
+        Beta0  = (mean_deaths - (mean_casses * Beta1))
+
+        return y_mean, x_mean, Beta0, Beta1
         
 
-        print("la suma de los cuadrados es: ", suma, ", la coviarianza es: ", suma_d, "; por lo tanto, el modelo es", "{0:.2f}".format((suma_d /suma)))
+        #print("la suma de los cuadrados es: ", suma, ", la coviarianza es: ", suma_d, "; por lo tanto, el modelo es", )
 
         
 
