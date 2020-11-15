@@ -72,4 +72,4 @@ class Process:
 
         target = torch.tensor(self._country_stats[[' New_cases']].values).int()
 
-        print(target[0])
+        print(len(target))
