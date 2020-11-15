@@ -68,8 +68,65 @@ class Process:
 
         return rate
 
-    def _test_print_covariance_to_watch_out(self):
+    """
+    def return_mean_cases(self):
+        
 
-        target = torch.tensor(self._country_stats[[' New_cases']].values).int()
+        _target = torch.tensor(self._country_stats[[' New_cases']].values).int()
+        mean_cases_ = int(torch.mean(_target, dim = 0).item())
 
-        print(len(target))
+        _target_ = torch.tensor(self._country_stats[[' New_deaths']].values).int()
+        _mean_cases = int(torch.mean(_target_, dim = 0).item())
+
+
+
+        return mean_cases_, _mean_cases
+    """
+
+    
+
+    def _get_power_of_x_variables(self):
+
+        # (X – X^)²
+
+
+
+        # index into the array to calculate the covariances wth x and y's values
+        list_to_index_new_cases = [] # x
+        list_to_index_new_deaths = [] # y
+
+        target_cases = torch.tensor(self._country_stats[[' New_cases']].values).float()
+        mean_casses = torch.mean(target_cases, dim= 0).item()
+
+
+        
+
+        target_deaths = torch.tensor(self._country_stats[[' New_deaths']].values).float()
+        mean_deaths = torch.mean(target_deaths, dim= 0).item()
+
+        size_of_array = len(target_cases)
+        suma = 0 # for the new cases
+        suma_d = 0 # for death cases
+
+        for x in target_cases:
+            #print(x.item())
+            list_to_index_new_cases.append(x.item() - mean_casses)
+            suma += pow(x.item() - mean_casses, 2)
+        
+        for y in target_deaths:
+            list_to_index_new_deaths.append(y.item() - mean_deaths)
+
+        
+        for z in range(0, size_of_array):
+            suma_d += (list_to_index_new_cases[z] * list_to_index_new_deaths[z])
+
+
+
+        # Beta 0 and Beta 1 has been already calculated
+        
+
+        print("la suma de los cuadrados es: ", suma, ", la coviarianza es: ", suma_d, "; por lo tanto, el modelo es", "{0:.2f}".format((suma_d /suma)))
+
+        
+
+        #return suma
