@@ -10,6 +10,7 @@ def Index(request):
 
     #return JsonResponse({'keys': str(new_process.get_keys())})
     return render(request, 'COVID/index.html')
+    
 
 
 def Dataframes(request):
@@ -48,7 +49,9 @@ def Rate_mortality(request, country_code):
 
     #return HttpResponse("mortality rate in the country "+country+", is: "+ str("{0:.2f}".format(rate_value)) + "%")
 
-    return JsonResponse({'country':str(rate.country_codes[country_code]),'rate_mortality': rate_value})
+    #return JsonResponse({'country':str(rate.country_codes[country_code]),'rate_mortality': rate_value})
+
+    return render(request, 'COVID/rate.html',{'country':str(rate.country_codes[country_code]),'rate_mortality': rate_value} )
 
 def Math_model(request, country_code):
     # 1 instantiate the Math model class 
