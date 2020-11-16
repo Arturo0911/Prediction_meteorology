@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .Process import Process as process
 from .Process import Math_model as _math
 from django.http import HttpResponse, JsonResponse
-
+from django.views.decorators.csrf import csrf_exempt
 
 def Index(request):
     
@@ -18,6 +18,8 @@ def Dataframes(request):
 
     return HttpResponse(str(datas.Read()))
 
+
+@csrf_exempt
 def Rate_mortality(request, country_code):
 
     #country = "Ecuador"
