@@ -3,8 +3,6 @@ from .Process import Process as process
 from .Process import Math_model as _math
 from django.http import HttpResponse, JsonResponse
 
-# Create your views here.
-
 
 def Index(request):
     
@@ -41,11 +39,13 @@ def Rate_mortality(request, country_code):
 
     rate_value = rate.mortality_rate(mean_deaths,mean_cases)
 
-    
+    rate.store_country_codes()
+
+    #print(rate._country_stats)
 
     #return HttpResponse("mortality rate in the country "+country+", is: "+ str("{0:.2f}".format(rate_value)) + "%")
 
-    return JsonResponse({'country':country_code,'rate_mortality': rate_value})
+    return JsonResponse({'country':str(rate.country_codes[country_code]),'rate_mortality': rate_value})
 
 def Math_model(request, country_code):
     # 1 instantiate the Math model class 
@@ -57,8 +57,10 @@ def Math_model(request, country_code):
 
     y,x,b0,b1 = math_model._get_power_of_x_variables()
 
+    #math_model.store_country_codes()
+
     # Math_model class
-    print(y,x,b0,b1)
+    #print(y,x,b0,b1)
 
     Main_model = _math.Math_model(b0, b1, x, y)
     

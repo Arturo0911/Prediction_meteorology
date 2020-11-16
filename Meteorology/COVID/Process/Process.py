@@ -13,6 +13,8 @@ class Process:
 
         self._country_stats = ""
         self._new_deaths = ""
+        self.country_codes = {}
+
 
         
     def Read(self):
@@ -65,6 +67,25 @@ class Process:
         rate = float((mean_deaths/mean_cases)*100)
 
         return rate
+
+
+    def store_country_codes(self):
+        
+
+        #leslie = self.data_frame[[' Country_code', ' Country']]
+        
+        #print(self.data_frame[' Country'].to_numpy())
+
+        for i in self.data_frame[[' Country_code',' Country']].to_numpy():
+
+            if (i[1] not in self.country_codes.values()):
+
+                self.country_codes[i[0]] =  i[1]
+
+        print(len(self.country_codes))
+        
+        
+        
 
     def _get_power_of_x_variables(self):
 

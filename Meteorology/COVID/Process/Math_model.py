@@ -18,6 +18,11 @@ class Math_model:
         
         return "Predict model: Y = "+str(self.Beta_zero) + " + "+" ("+str(self.Beta_one)+".X"+")"
 
+
+    def prediction(self ):
+
+        pass
+
         
 
     
