@@ -131,7 +131,7 @@ class Process:
         y_mean = mean_deaths
         x_mean = mean_casses
 
-        Beta1 = float(suma_d /suma)
+        Beta1 = float(((suma_d) / size_of_array) /suma)
         Beta0  = (mean_deaths - (mean_casses * Beta1))
 
         return y_mean, x_mean, Beta0, Beta1
