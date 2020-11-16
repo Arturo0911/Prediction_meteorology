@@ -6,9 +6,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 def Index(request):
     
-    new_process = process.Process()
+    #new_process = process.Process()
 
-    return JsonResponse({'keys': str(new_process.get_keys())})
+    #return JsonResponse({'keys': str(new_process.get_keys())})
+    return render(request, 'COVID/index.html')
 
 
 def Dataframes(request):
